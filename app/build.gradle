@@ -45,8 +45,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation(name: 'wsface-release', ext: 'aar')
+//    implementation(name: 'wsface-release', ext: 'aar')
     implementation files('libs/gson-2.3.1.jar')
     implementation 'com.neovisionaries:nv-websocket-client:2.2'
     implementation 'com.alibaba:fastjson:1.2.49'
+    implementation files('libs/wsface.jar')
 }

@@ -4,8 +4,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
+import com.massky.wsface.response.Action;
 import com.massky.wsface.service.WsManagerService;
+import com.massky.wsface.util.MD5Util;
+import com.massky.wsface.util.SerialNumberUtil;
+import com.massky.wsface.util.Timeuti;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,17 +30,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WsManagerService.getInstance().setUrl(DEF_URL);//设置连接
-        WsManagerService.getInstance().init(this, WsApplication.getInstance());//建立连接
+
+        String serial_number = SerialNumberUtil.getSerialNumber();
+        WsManagerService.getInstance().set_device_serial_number(serial_number);
+        WsManagerService.getInstance().setUrl(DEF_URL);//
+        WsManagerService.getInstance().init(this,WsApplication.getInstance());//建立连接
         btn_send = (Button) findViewById(R.id.btn_send);
         btn_send.setOnClickListener(this);
     }
+
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         WsManagerService.getInstance().disconnect();//断开连接
-
     }
 
     @Override

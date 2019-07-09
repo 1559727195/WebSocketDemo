@@ -38,7 +38,7 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="com.massky.face.push.receiver" />
-                <category android:name="此处为项目包名" />
+                <category android:name="com.massky.websocket" />
                 <!--换成包名-->
             </intent-filter>
         </receiver>
